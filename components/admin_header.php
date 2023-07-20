@@ -15,15 +15,15 @@
 
    <section class="flex">
 
-      <a href="../admin/dashboard.php" class="logo">Admin<span>Panel</span></a>
+      <a href="../admin/dashboard.php" class="logo">Admin <span>ZeroShopee.</span></a>
 
       <nav class="navbar">
-         <a href="../admin/dashboard.php">home</a>
-         <a href="../admin/products.php">products</a>
-         <a href="../admin/placed_orders.php">orders</a>
-         <a href="../admin/admin_accounts.php">admins</a>
-         <a href="../admin/users_accounts.php">users</a>
-         <a href="../admin/messages.php">messages</a>
+         <a href="../admin/dashboard.php">trang chủ</a>
+         <a href="../admin/products.php">sản phẩm</a>
+         <a href="../admin/placed_orders.php">đơn hàng</a>
+         <a href="../admin/admin_accounts.php">quản lý</a>
+         <a href="../admin/users_accounts.php">người dùng</a>
+         <a href="../admin/messages.php">tin nhắn</a>
       </nav>
 
       <div class="icons">
@@ -37,13 +37,13 @@
             $select_profile->execute([$admin_id]);
             $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
          ?>
-         <p><?= $fetch_profile['name']; ?></p>
-         <a href="../admin/update_profile.php" class="btn">update profile</a>
+         <h1 style="text-align: center"><?= 'Xin Chào '.$fetch_profile['name']; ?></h1>
+         <a href="../admin/update_profile.php" class="btn">cập nhật thông tin</a>
          <div class="flex-btn">
-            <a href="../admin/register_admin.php" class="option-btn">register</a>
-            <a href="../admin/admin_login.php" class="option-btn">login</a>
+            <a href="../admin/register_admin.php" class="option-btn">đăng ký</a>
+            <a href="../admin/admin_login.php" class="option-btn">đăng nhập</a>
          </div>
-         <a href="../components/admin_logout.php" class="delete-btn" onclick="return confirm('logout from the website?');">logout</a> 
+         <a href="../components/admin_logout.php" class="delete-btn" onclick="return confirm('đăng xuất khỏi website?');">đăng xuất</a> 
       </div>
 
    </section>

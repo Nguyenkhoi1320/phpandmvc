@@ -35,7 +35,7 @@ include 'components/wishlist_cart.php';
 
 <section class="products">
 
-   <h1 class="heading">latest products</h1>
+   <h1 class="heading">SẢN PHẨM MỚI NHẤT</h1>
 
    <div class="box-container">
 
@@ -58,30 +58,18 @@ include 'components/wishlist_cart.php';
          <div class="price"><span>$</span><?= $fetch_product['price']; ?><span>/-</span></div>
          <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
       </div>
-      <input type="submit" value="add to cart" class="btn" name="add_to_cart">
+      <input type="submit" value="thêm vào giỏ hàng" class="btn" name="add_to_cart">
    </form>
    <?php
       }
    }else{
-      echo '<p class="empty">no products found!</p>';
+      echo '<p class="empty">Không Tìm Thấy Sản Phẩm!</p>';
    }
    ?>
 
    </div>
 
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
 
 <?php include 'components/footer.php'; ?>
 

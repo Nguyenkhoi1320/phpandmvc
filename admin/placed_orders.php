@@ -16,7 +16,8 @@ if(isset($_POST['update_payment'])){
    $payment_status = filter_var($payment_status, FILTER_SANITIZE_STRING);
    $update_payment = $conn->prepare("UPDATE `orders` SET payment_status = ? WHERE id = ?");
    $update_payment->execute([$payment_status, $order_id]);
-   $message[] = 'payment status updated!';
+   $message[] = '
+   trạng thái thanh toán được cập nhật!';
 }
 
 if(isset($_GET['delete'])){
@@ -47,7 +48,8 @@ if(isset($_GET['delete'])){
 
 <section class="orders">
 
-<h1 class="heading">placed orders</h1>
+<h1 class="heading">
+đặt hàng</h1>
 
 <div class="box-container">
 
@@ -58,13 +60,13 @@ if(isset($_GET['delete'])){
          while($fetch_orders = $select_orders->fetch(PDO::FETCH_ASSOC)){
    ?>
    <div class="box">
-      <p> placed on : <span><?= $fetch_orders['placed_on']; ?></span> </p>
-      <p> name : <span><?= $fetch_orders['name']; ?></span> </p>
-      <p> number : <span><?= $fetch_orders['number']; ?></span> </p>
-      <p> address : <span><?= $fetch_orders['address']; ?></span> </p>
-      <p> total products : <span><?= $fetch_orders['total_products']; ?></span> </p>
-      <p> total price : <span>$<?= $fetch_orders['total_price']; ?>/-</span> </p>
-      <p> payment method : <span><?= $fetch_orders['method']; ?></span> </p>
+      <p> đặt vào lúc : <span><?= $fetch_orders['placed_on']; ?></span> </p>
+      <p> họ và tên : <span><?= $fetch_orders['name']; ?></span> </p>
+      <p> sđt : <span><?= $fetch_orders['number']; ?></span> </p>
+      <p> địa chỉ : <span><?= $fetch_orders['address']; ?></span> </p>
+      <p> tổng sản phẩm : <span><?= $fetch_orders['total_products']; ?></span> </p>
+      <p> tổng cộng : <span>$<?= $fetch_orders['total_price']; ?>/-</span> </p>
+      <p> phương thức thanh toán : <span><?= $fetch_orders['method']; ?></span> </p>
       <form action="" method="post">
          <input type="hidden" name="order_id" value="<?= $fetch_orders['id']; ?>">
          <select name="payment_status" class="select">
@@ -73,7 +75,7 @@ if(isset($_GET['delete'])){
             <option value="completed">completed</option>
          </select>
         <div class="flex-btn">
-         <input type="submit" value="update" class="option-btn" name="update_payment">
+         <input type="submit" value="cập nhật" class="option-btn" name="update_payment">
          <a href="placed_orders.php?delete=<?= $fetch_orders['id']; ?>" class="delete-btn" onclick="return confirm('delete this order?');">delete</a>
         </div>
       </form>
@@ -81,7 +83,7 @@ if(isset($_GET['delete'])){
    <?php
          }
       }else{
-         echo '<p class="empty">no orders placed yet!</p>';
+         echo '<p class="empty">chưa có đơn đặt hàng!</p>';
       }
    ?>
 
