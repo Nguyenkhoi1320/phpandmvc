@@ -15,7 +15,7 @@ if (isset($message)) {
 
    <section class="flex">
 
-      <a href="home.php" class="logo">Zero Shopee<span>.</span></a>
+      <a href="home.php" class="logo">Zero Sho<span>pee.</span></a>
 
       <nav class="navbar">
          <a href="home.php">trang chủ</a>

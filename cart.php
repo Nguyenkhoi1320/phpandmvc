@@ -105,7 +105,7 @@ if (isset($_POST['update_qty'])) {
             </span></p>
          <a href="shop.php" class="option-btn">Tiếp tục mua sắm</a>
          <a href="cart.php?delete_all" class="delete-btn <?= ($grand_total > 1) ? '' : 'disabled'; ?>"
-            onclick="return confirm('delete all from cart?');">Xóa tất cả sản phẩm</a>
+            onclick="return confirm('xóa tất cả sản phẩm?');">Xóa tất cả sản phẩm</a>
          <a href="checkout.php" class="btn <?= ($grand_total > 1) ? '' : 'disabled'; ?>">
             tiến hành thanh toán</a>
       </div>
