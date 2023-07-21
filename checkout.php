@@ -100,10 +100,24 @@ if (isset($_POST['order'])) {
             <input type="hidden" name="total_products" value="<?= $total_products; ?>">
             <input type="hidden" name="total_price" value="<?= $grand_total; ?>" value="">
             <div class="grand-total">Tổng cộng : <span>
-                  <?= $grand_total; ?>VNĐ
+                  <?= formatCurrency($grand_total) ?>.000 VNĐ
                </span></div>
          </div>
+         <?php
+         function formatCurrency($amount)
+         {
+            // Sử dụng hàm number_format() để định dạng số thành chuỗi kiểu tiền tệ
+            // Tham số thứ nhất là số cần định dạng
+            // Tham số thứ hai là số chữ số sau dấu thập phân (mặc định là 0)
+            // Tham số thứ ba là ký tự ngăn cách phần nghìn (mặc định là dấu phẩy)
+            // Tham số thứ tư là ký tự ngăn cách phần thập phân (mặc định là dấu chấm)
+            return number_format($amount, 0, ',', '.');
+         }
 
+         // Ví dụ sử dụng hàm formatCurrency() với giá trị của biến $grand_total
+         $grand_total = 1000000; // Giả sử $grand_total có giá trị là 1,000,000
+         echo formatCurrency($grand_total); // Kết quả sẽ là "1.000.000 VNĐ"
+         ?>
          <h3>Mục đặt hàng</h3>
 
          <div class="flex">

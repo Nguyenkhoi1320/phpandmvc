@@ -233,7 +233,7 @@ section{
 }
 
 .home-bg{
-   background-image :url(../images/home-bg.png) no-repeat;
+   background-image :url(../images/bg-news.jpg);
    background-size: cover;
    background-position: center;
 }

@@ -85,7 +85,7 @@ if (isset($_POST['update_qty'])) {
                      <button type="submit" class="fas fa-edit" name="update_qty"></button>
                   </div>
                   <div class="sub-total"> tổng phụ : <span>
-                        <?= $sub_total = ($fetch_cart['price'] * $fetch_cart['quantity']); ?>VNĐ
+                        <?= $sub_total = ($fetch_cart['price'] * $fetch_cart['quantity']); ?>.000 VNĐ
                      </span> </div>
                   <input type="submit" value="xóa sản phẩm" onclick="return confirm('xóa sản phẩm này khỏi giỏ hàng?');"
                      class="delete-btn" name="delete">
@@ -101,7 +101,7 @@ if (isset($_POST['update_qty'])) {
 
       <div class="cart-total">
          <p>tổng cộng : <span>
-               <?= $grand_total; ?>VNĐ
+               <?= formatCurrency($grand_total); ?>.000 VNĐ
             </span></p>
          <a href="shop.php" class="option-btn">Tiếp tục mua sắm</a>
          <a href="cart.php?delete_all" class="delete-btn <?= ($grand_total > 1) ? '' : 'disabled'; ?>"
@@ -120,6 +120,21 @@ if (isset($_POST['update_qty'])) {
 
 
 
+   <?php
+   function formatCurrency($amount)
+   {
+      // Sử dụng hàm number_format() để định dạng số thành chuỗi kiểu tiền tệ
+      // Tham số thứ nhất là số cần định dạng
+      // Tham số thứ hai là số chữ số sau dấu thập phân (mặc định là 0)
+      // Tham số thứ ba là ký tự ngăn cách phần nghìn (mặc định là dấu phẩy)
+      // Tham số thứ tư là ký tự ngăn cách phần thập phân (mặc định là dấu chấm)
+      return number_format($amount, 0, ',', '.');
+   }
+
+   // Ví dụ sử dụng hàm formatCurrency() với giá trị của biến $grand_total
+   $grand_total = 1000000; // Giả sử $grand_total có giá trị là 1,000,000
+   echo formatCurrency($grand_total); // Kết quả sẽ là "1.000.000 VNĐ"
+   ?>
 
 
 
