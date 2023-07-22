@@ -49,7 +49,7 @@ if (!isset($admin_id)) {
             <?php
             $total_pendings = 0;
             $select_pendings = $conn->prepare("SELECT * FROM `orders` WHERE payment_status = ?");
-            $select_pendings->execute(['pending']);
+            $select_pendings->execute(['đang xử lý']);
             if ($select_pendings->rowCount() > 0) {
                while ($fetch_pendings = $select_pendings->fetch(PDO::FETCH_ASSOC)) {
                   $total_pendings += $fetch_pendings['total_price'];
@@ -57,18 +57,48 @@ if (!isset($admin_id)) {
             }
             ?>
             <h3>
-               <?= $total_pendings; ?><span>VNĐ</span>
+               <?= formatCurrency($total_pendings); ?>.000 VNĐ
             </h3>
             <p>
                đơn hàng đang chờ xử lý</p>
             <a href="placed_orders.php" class="btn">Xem đơn hàng</a>
          </div>
+         <?php
+         function formatCurrency($amount)
+         {
+            // Sử dụng hàm number_format() để định dạng số thành chuỗi kiểu tiền tệ
+            // Tham số thứ nhất là số cần định dạng
+            // Tham số thứ hai là số chữ số sau dấu thập phân (mặc định là 0)
+            // Tham số thứ ba là ký tự ngăn cách phần nghìn (mặc định là dấu phẩy)
+            // Tham số thứ tư là ký tự ngăn cách phần thập phân (mặc định là dấu chấm)
+            return number_format($amount, 0, ',', '.');
+         }
+
+         // Ví dụ sử dụng hàm formatCurrency() với giá trị của biến $grand_total
+         $total_pendings = 1000000; // Giả sử $grand_total có giá trị là 1,000,000
+        // echo formatCurrency($total_pendings); // Kết quả sẽ là "1.000.000 VNĐ"
+         ?>
+             <?php
+         function formatCurrency1($amount)
+         {
+            // Sử dụng hàm number_format() để định dạng số thành chuỗi kiểu tiền tệ
+            // Tham số thứ nhất là số cần định dạng
+            // Tham số thứ hai là số chữ số sau dấu thập phân (mặc định là 0)
+            // Tham số thứ ba là ký tự ngăn cách phần nghìn (mặc định là dấu phẩy)
+            // Tham số thứ tư là ký tự ngăn cách phần thập phân (mặc định là dấu chấm)
+            return number_format($amount, 0, ',', '.');
+         }
+
+         // Ví dụ sử dụng hàm formatCurrency() với giá trị của biến $grand_total
+         $total_completes = 1000000; // Giả sử $grand_total có giá trị là 1,000,000
+         // echo formatCurrency($total_completes); // Kết quả sẽ là "1.000.000 VNĐ"
+         ?>
 
          <div class="box">
             <?php
             $total_completes = 0;
             $select_completes = $conn->prepare("SELECT * FROM `orders` WHERE payment_status = ?");
-            $select_completes->execute(['completed']);
+            $select_completes->execute(['hoàn tất']);
             if ($select_completes->rowCount() > 0) {
                while ($fetch_completes = $select_completes->fetch(PDO::FETCH_ASSOC)) {
                   $total_completes += $fetch_completes['total_price'];
@@ -76,7 +106,7 @@ if (!isset($admin_id)) {
             }
             ?>
             <h3>
-               <?= $total_completes; ?><span>VNĐ</span>
+            <?= formatCurrency($total_completes); ?>.000 VNĐ
             </h3>
             <p>
                đơn hàng đã hoàn thành</p>
