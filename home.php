@@ -165,9 +165,9 @@ include 'components/wishlist_cart.php';
                <h3>mũ lưỡi trai</h3>
             </a>
 
-            <a href="category.php?category=váy cưới" class="swiper-slide slide">
+            <a href="category.php?category=váy" class="swiper-slide slide">
                <img src="images/icon8.png" alt="">
-               <h3>váy cưới</h3>
+               <h3>váy</h3>
             </a>
             <a href="category.php?category=giày" class="swiper-slide slide">
                <img src="images/giay.png" alt="">
