@@ -36,7 +36,7 @@ if (isset($_GET['delete'])) {
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>placed orders</title>
+   <title>đặt hàng</title>
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
@@ -67,18 +67,18 @@ if (isset($_GET['delete'])) {
       <p> sđt : <span><?= $fetch_orders['number']; ?></span> </p>
       <p> địa chỉ : <span><?= $fetch_orders['address']; ?></span> </p>
       <p> tổng sản phẩm : <span><?= $fetch_orders['total_products']; ?></span> </p>
-      <p> tổng cộng : <span>$<?= $fetch_orders['total_price']; ?>/-</span> </p>
+      <p> tổng cộng : <span><?= $fetch_orders['total_price']; ?>VNĐ</span> </p>
       <p> phương thức thanh toán : <span><?= $fetch_orders['method']; ?></span> </p>
       <form action="" method="post">
          <input type="hidden" name="order_id" value="<?= $fetch_orders['id']; ?>">
          <select name="payment_status" class="select">
             <option selected disabled><?= $fetch_orders['payment_status']; ?></option>
-            <option value="pending">pending</option>
-            <option value="completed">completed</option>
+            <option value="đang xử lý">đang xử lý</option>
+            <option value="hoàn tất">hoàn tất</option>
          </select>
         <div class="flex-btn">
          <input type="submit" value="cập nhật" class="option-btn" name="update_payment">
-         <a href="placed_orders.php?delete=<?= $fetch_orders['id']; ?>" class="delete-btn" onclick="return confirm('delete this order?');">delete</a>
+         <a href="placed_orders.php?delete=<?= $fetch_orders['id']; ?>" class="delete-btn" onclick="return confirm('Xác nhận xóa đơn này?');">xóa</a>
         </div>
       </form>
    </div>

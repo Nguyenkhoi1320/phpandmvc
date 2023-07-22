@@ -130,10 +130,6 @@ if (isset($_POST['update_qty'])) {
       // Tham số thứ tư là ký tự ngăn cách phần thập phân (mặc định là dấu chấm)
       return number_format($amount, 0, ',', '.');
    }
-
-   // Ví dụ sử dụng hàm formatCurrency() với giá trị của biến $grand_total
-   $grand_total = 1000000; // Giả sử $grand_total có giá trị là 1,000,000
-   echo formatCurrency($grand_total); // Kết quả sẽ là "1.000.000 VNĐ"
    ?>
 
 
