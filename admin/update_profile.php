@@ -66,18 +66,18 @@ if (isset($_POST['submit'])) {
    <section class="form-container">
 
       <form action="" method="post">
-         <h3>update profile</h3>
+         <h3>Cập nhật thông tin</h3>
          <input type="hidden" name="prev_pass" value="<?= $fetch_profile['password']; ?>">
          <input type="text" name="name" value="<?= $fetch_profile['name']; ?>" required
-            placeholder="enter your username" maxlength="20" class="box"
+            placeholder="nhập vào tên người dùng" maxlength="20" class="box"
             oninput="this.value = this.value.replace(/\s/g, '')">
-         <input type="password" name="old_pass" placeholder="enter old password" maxlength="20" class="box"
+         <input type="password" name="old_pass" placeholder="nhập mật khẩu cũ" maxlength="20" class="box"
             oninput="this.value = this.value.replace(/\s/g, '')">
-         <input type="password" name="new_pass" placeholder="enter new password" maxlength="20" class="box"
+         <input type="password" name="new_pass" placeholder="nhập mật khẩu mới" maxlength="20" class="box"
             oninput="this.value = this.value.replace(/\s/g, '')">
-         <input type="password" name="confirm_pass" placeholder="confirm new password" maxlength="20" class="box"
+         <input type="password" name="confirm_pass" placeholder="xác nhận lại mật khẩu mới" maxlength="20" class="box"
             oninput="this.value = this.value.replace(/\s/g, '')">
-         <input type="submit" value="update now" class="btn" name="submit">
+         <input type="submit" value="xác nhận" class="btn" name="submit">
       </form>
 
    </section>

@@ -67,7 +67,7 @@ if (isset($_GET['delete'])) {
                   <p> message : <span>
                         <?= $fetch_message['message']; ?>
                      </span></p>
-                  <a href="messages.php??delete=<?= $fetch_message['id']; ?>" onclick="return confirm('xóa tin nhắn này');"
+                  <a href="messages.php?delete=<?= $fetch_message['id']; ?>" onclick="return confirm('xóa tin nhắn này');"
                      class="delete-btn">xóa</a>
                </div>
                <?php

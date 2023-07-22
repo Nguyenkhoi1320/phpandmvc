@@ -77,8 +77,8 @@ if (isset($_GET['delete'])) {
                   <p> tổng sản phẩm : <span>
                         <?= $fetch_orders['total_products']; ?>
                      </span> </p>
-                  <p> tổng cộng : <span>$
-                        <?= $fetch_orders['total_price']; ?>/-
+                  <p> tổng cộng : <span>
+                        <?= $fetch_orders['total_price']; ?>VNĐ 
                      </span> </p>
                   <p> phương thức thanh toán : <span>
                         <?= $fetch_orders['method']; ?>
