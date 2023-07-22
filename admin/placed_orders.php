@@ -55,56 +55,39 @@ if (isset($_GET['delete'])) {
 
       <div class="box-container">
 
-         <?php
-         $select_orders = $conn->prepare("SELECT * FROM `orders`");
-         $select_orders->execute();
-         if ($select_orders->rowCount() > 0) {
-            while ($fetch_orders = $select_orders->fetch(PDO::FETCH_ASSOC)) {
-               ?>
-               <div class="box">
-                  <p> đặt vào lúc : <span>
-                        <?= $fetch_orders['placed_on']; ?>
-                     </span> </p>
-                  <p> họ và tên : <span>
-                        <?= $fetch_orders['name']; ?>
-                     </span> </p>
-                  <p> sđt : <span>
-                        <?= $fetch_orders['number']; ?>
-                     </span> </p>
-                  <p> địa chỉ : <span>
-                        <?= $fetch_orders['address']; ?>
-                     </span> </p>
-                  <p> tổng sản phẩm : <span>
-                        <?= $fetch_orders['total_products']; ?>
-                     </span> </p>
-                  <p> tổng cộng : <span>
-                        <?= $fetch_orders['total_price']; ?>VNĐ 
-                     </span> </p>
-                  <p> phương thức thanh toán : <span>
-                        <?= $fetch_orders['method']; ?>
-                     </span> </p>
-                  <form action="" method="post">
-                     <input type="hidden" name="order_id" value="<?= $fetch_orders['id']; ?>">
-                     <select name="payment_status" class="select">
-                        <option selected disabled>
-                           <?= $fetch_orders['payment_status']; ?>
-                        </option>
-                        <option value="đang xử lý">đang xử lý</option>
-                        <option value="hoàn tất">hoàn tất</option>
-                     </select>
-                     <div class="flex-btn">
-                        <input type="submit" value="cập nhật" class="option-btn" name="update_payment">
-                        <a href="placed_orders.php?delete=<?= $fetch_orders['id']; ?>" class="delete-btn"
-                           onclick="return confirm('xóa đơn hàng này?');">xóa</a>
-                     </div>
-                  </form>
-               </div>
-               <?php
-            }
-         } else {
-            echo '<p class="empty">chưa có đơn đặt hàng!</p>';
+   <?php
+      $select_orders = $conn->prepare("SELECT * FROM `orders`");
+      $select_orders->execute();
+      if($select_orders->rowCount() > 0){
+         while($fetch_orders = $select_orders->fetch(PDO::FETCH_ASSOC)){
+   ?>
+   <div class="box">
+      <p> đặt vào lúc : <span><?= $fetch_orders['placed_on']; ?></span> </p>
+      <p> họ và tên : <span><?= $fetch_orders['name']; ?></span> </p>
+      <p> sđt : <span><?= $fetch_orders['number']; ?></span> </p>
+      <p> địa chỉ : <span><?= $fetch_orders['address']; ?></span> </p>
+      <p> tổng sản phẩm : <span><?= $fetch_orders['total_products']; ?></span> </p>
+      <p> tổng cộng : <span>$<?= $fetch_orders['total_price']; ?>/-</span> </p>
+      <p> phương thức thanh toán : <span><?= $fetch_orders['method']; ?></span> </p>
+      <form action="" method="post">
+         <input type="hidden" name="order_id" value="<?= $fetch_orders['id']; ?>">
+         <select name="payment_status" class="select">
+            <option selected disabled><?= $fetch_orders['payment_status']; ?></option>
+            <option value="pending">pending</option>
+            <option value="completed">completed</option>
+         </select>
+        <div class="flex-btn">
+         <input type="submit" value="cập nhật" class="option-btn" name="update_payment">
+         <a href="placed_orders.php?delete=<?= $fetch_orders['id']; ?>" class="delete-btn" onclick="return confirm('delete this order?');">delete</a>
+        </div>
+      </form>
+   </div>
+   <?php
          }
-         ?>
+      }else{
+         echo '<p class="empty">chưa có đơn đặt hàng!</p>';
+      }
+   ?>
 
       </div>
 
